@@ -1,0 +1,32 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# bundler state
+/.bundle
+/vendor/bundle/
+/vendor/ruby/
+vendor/
+
+
+# scm revert files
+**.orig
+
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# RubyMine project files
+.idea
+
+# Textmate project files
+/*.tmproj
+
+# vim artifacts
+**.swp
+.env
+
+# RVM
+.ruby-version
+.ruby-gemset
+.rails_footnotes
