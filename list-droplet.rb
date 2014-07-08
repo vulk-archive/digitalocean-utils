@@ -9,5 +9,5 @@ end
 droplets = barge.droplet.all.droplets
 
 droplets.each do |droplet|
-    puts "#{droplet.name} (id: #{droplet.id})"
+    puts "#{droplet.name} (id: #{droplet.id}) -- #{droplet.networks.v4[0].ip_address}"
 end
