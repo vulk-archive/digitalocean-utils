@@ -18,8 +18,10 @@ Some scripts to work with digital ocean
 
 
  * create-riak-droplet - create a riak dev droplet
-   - ```./create-riak-droplet.rb```
+   - ```./create-riak-droplet```
  * list-droplets - list all running droplets
-   - ```./list-droplets.rb```
+   - ```./list-droplets```
+ * list-images - list all of your images
+   - ```./list-images```
  * destory-droplet - destroy the named droplet
-   - ```./destory-droplet.rb some_droplet_name```
+   - ```./destory-droplet some_droplet_name```

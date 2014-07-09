@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'barge'
+
+barge = Barge::Client.new do |config|
+    config.access_token = ENV['DIGITALOCEAN_TOKEN']
+end
+
+images = barge.image.all.first[1]
+myimages = images.collect {|i| i if i.public == false}.compact.collect {|x| "#{x.name} (id: #{x.id}) -- created at #{x.created_at}"}.sort
+
+myimages.each {|i| puts i}
+
