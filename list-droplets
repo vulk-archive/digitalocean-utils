@@ -9,5 +9,10 @@ end
 droplets = barge.droplet.all.droplets
 
 droplets.each do |droplet|
-    puts "#{droplet.name} [#{droplet.status}] (id: #{droplet.id}) -- #{droplet.networks.v4[0].ip_address}"
+  if droplet.networks.v4.nil?
+    ip_address = "ip unknown"
+  else
+    ip_address = droplet.networks.v4[0].ip_address
+  end
+  puts "#{droplet.name} [#{droplet.status}] (id: #{droplet.id}) -- #{ip_address}"
 end
