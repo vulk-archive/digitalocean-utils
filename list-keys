@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'barge'
+
+barge = Barge::Client.new do |config|
+    config.access_token = ENV['DIGITALOCEAN_TOKEN']
+end
+
+keys = barge.key.all[:ssh_keys].collect do |k|
+  "#{k.name} -- id: #{k.id}"
+end.sort
+
+puts keys.join("\n")
