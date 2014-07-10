@@ -7,7 +7,10 @@ barge = Barge::Client.new do |config|
 end
 
 images = barge.image.all.first[1]
-myimages = images.collect {|i| i if i.public == false}.compact.collect {|x| "#{x.name} (id: #{x.id}) -- created at #{x.created_at}"}.sort
+
+myimages = images.collect {|i| i if i.public == false}.compact.collect do |x|
+  "#{x.name} (id: #{x.id}) -- created at #{x.created_at}"
+end.sort
 
 myimages.each {|i| puts i}
 
