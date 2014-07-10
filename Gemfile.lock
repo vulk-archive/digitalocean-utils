@@ -5,6 +5,9 @@ GEM
       faraday (~> 0.9)
       faraday_middleware (~> 0.9)
       hashie (~> 3.1)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
@@ -18,4 +21,5 @@ PLATFORMS
 
 DEPENDENCIES
   barge
+  dotenv
   highline

@@ -1,7 +1,13 @@
 #!/usr/bin/env ruby
-
 require 'barge'
 require 'highline/import'
+require 'dotenv'
+Dotenv.load
+
+unless ENV['DIGITALOCEAN_TOKEN']
+  puts "Please set the DIGITALOCEAN_TOKEN environment variable"
+  exit
+end
 
 barge = Barge::Client.new do |config|
     config.access_token = ENV['DIGITALOCEAN_TOKEN']

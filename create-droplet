@@ -1,11 +1,17 @@
 #!/usr/bin/env ruby
 require 'barge'
 require 'yaml'
+require 'dotenv'
+Dotenv.load
+
+unless ENV['DIGITALOCEAN_TOKEN']
+  puts "Please set the DIGITALOCEAN_TOKEN environment variable"
+  exit
+end
 
 barge = Barge::Client.new do |config|
     config.access_token = ENV['DIGITALOCEAN_TOKEN']
 end
-
 
 config_file=ARGV[0]
 if config_file.nil?
