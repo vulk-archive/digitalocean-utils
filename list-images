@@ -8,9 +8,11 @@ end
 
 images = barge.image.all.first[1]
 
+# TODO: add a --all option to show all digital ocean images
+
 myimages = images.collect {|i| i if i.public == false}.compact.collect do |x|
   "#{x.name} (id: #{x.id}) -- created at #{x.created_at}"
 end.sort
 
-myimages.each {|i| puts i}
+puts myimages.join("\n")
 
