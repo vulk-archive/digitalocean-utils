@@ -1,0 +1,12 @@
+---
+:base_name: riak
+:region: nyc2
+:image_id: '4811876'
+#:image_id: '4810024'
+#:image_id: '4686570'
+:size: 8gb
+:ssh_keys:
+  - 163567
+  - 59637
+  - 59636
+  - 60568

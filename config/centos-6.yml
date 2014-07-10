@@ -1,0 +1,10 @@
+---
+:base_name: centos-6-5
+:region: nyc2
+:image_id: '3448641'
+:size: 512mb
+:ssh_keys:
+  - 163567
+  - 59637
+  - 59636
+  - 60568

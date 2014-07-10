@@ -1,0 +1,10 @@
+---
+:base_name: ubuntu-1204
+:region: nyc2
+:image_id: '3101045'
+:size: 512mb
+:ssh_keys:
+  - 163567
+  - 59637
+  - 59636
+  - 60568
