@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+require 'barge'
+require 'json'
+
+barge = Barge::Client.new do |config|
+    config.access_token = ENV['DIGITALOCEAN_TOKEN']
+end
+
+
+config_file=ARGV[0]
+if config_file.nil?
+  puts "Usage: create-droplet <example.json>"
+  exit(1)
+elsif not File.exist?(config_file)
+  puts "Config file not found: #{config_file}"
+  exit(1)
+end
+
+opts = JSON.load(File.read(config_file), :symbolize_names => true)
+
+base_name = opts[:base_name] || "a-node'
+name = "#{base_name}-"+rand.to_s.slice(2,10)
+region = opts[:region] || 'nyc2'
+image_id = opts[:image_id] #4810024 #4686570
+size = opts[:size] || '1gb'
+
+if image_id.nil?
+  puts "image_id must be specified!"
+  exit(1)
+end
+
+
+options = {name: name, region: region, image: image_id, size: size }
+
+d = barge.droplet.create(options)
+
+if d.success?
+  puts "Created droplet #{d.droplet.name} with id #{d.droplet.id}"
+  # TODO: maybe wait for an ipaddress
+  #       barge.droplet.show(d.droplet.id).droplet.networks.v4[0].ip_address
+else
+  puts "It seems we failed to create a new droplet"
+end
