@@ -8,7 +8,7 @@ end
 base_name = 'riak'
 name = "#{base_name}-"+rand.to_s.slice(2,10)
 region = 'nyc2'
-image_id = 4686570
+image_id = 4810024 #4686570
 size = '8gb'
 
 options = {name: name, region: region, image: image_id, size: size }
@@ -22,5 +22,3 @@ if d.success?
 else
   puts "It seems we failed to create a new droplet"
 end
-
-
