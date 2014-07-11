@@ -1,0 +1,10 @@
+---
+:base_name: clutch-app-pair
+:region: nyc2
+:image_id: '4836501'
+:size: 8gb
+:ssh_keys:
+  - 163567
+  - 59637
+  - 59636
+  - 60568
