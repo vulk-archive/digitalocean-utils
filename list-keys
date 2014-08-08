@@ -3,7 +3,7 @@ require 'bundler/setup'
 
 require 'barge'
 require 'dotenv'
-Dotenv.load
+Dotenv.load unless ENV['DIGITALOCEAN_TOKEN']
 
 unless ENV['DIGITALOCEAN_TOKEN']
   puts "Please set the DIGITALOCEAN_TOKEN environment variable"
