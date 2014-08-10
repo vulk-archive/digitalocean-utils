@@ -26,12 +26,17 @@ end
 
 opts = YAML.load_file(config_file)
 
-base_name = opts[:base_name] || "a-node"
-name = "#{base_name}-"+rand.to_s.slice(2,10)
+name = ARGV[1]
+if ! name
+  base_name = opts[:base_name] || "a-node"
+  name = "#{base_name}-"+rand.to_s.slice(2,10)
+end
+
 region = opts[:region] || 'nyc2'
-image_id = opts[:image_id] #4810024 #4686570
 size = opts[:size] || '1gb'
 ssh_keys = opts[:ssh_keys] || nil
+image_id = opts[:image_id]
+private_networking = opts[:private_networking] || true
 
 if image_id.nil?
   puts "image_id must be specified!"
@@ -39,7 +44,7 @@ if image_id.nil?
 end
 
 
-options = {name: name, region: region, image: image_id, size: size, ssh_keys: ssh_keys}
+options = { name: name, region: region, image: image_id, size: size, ssh_keys: ssh_keys, private_networking: private_networking }
 
 d = barge.droplet.create(options)
 
