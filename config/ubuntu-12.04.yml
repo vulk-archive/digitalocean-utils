@@ -3,6 +3,7 @@
 :region: nyc2
 :image_id: '3101045'
 :size: 512mb
+:private_networking: true
 :ssh_keys:
   - 163567
   - 59637
