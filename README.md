@@ -16,8 +16,8 @@ Some scripts to work with digital ocean
 ## Utils
 
 
- * create-riak-droplet <droplet-config> - create a riak dev droplet based config file info
-   - ```./create-riak-droplet config/ubuntu-12.04.yml```
+ * create droplet <droplet-config> - create a new roplet based config file info
+   - ```./create-droplet config/ubuntu-12.04.yml```
  * list-droplets - list all running droplets
    - ```./list-droplets```
  * list-images - list all of your images
