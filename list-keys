@@ -15,7 +15,7 @@ barge = Barge::Client.new do |config|
 end
 
 keys = barge.key.all[:ssh_keys].collect do |k|
-  " - #{k.id} # #{k.name}"
+  "  - #{k.id} # #{k.name}"
 end.sort
 
 puts keys.join("\n")
