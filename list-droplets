@@ -20,7 +20,10 @@ droplets.each do |droplet|
   if droplet.networks.v4.nil?
     ip_address = "ip unknown"
   else
-    ip_address = droplet.networks.v4[0].ip_address
+    pubnet = droplet.networks.v4.find { |n| n.type == 'public'}
+    pub_ip = pubnet ? pubnet.ip_address : nil
+    privnet = droplet.networks.v4.find { |n| n.type == 'private'}
+    priv_ip = privnet ? privnet.ip_address : nil
   end
-  puts "#{droplet.name} [#{droplet.status}] (id: #{droplet.id}) -- #{ip_address}"
+  puts "#{droplet.name} [#{droplet.status}] (id: #{droplet.id}) -- #{priv_ip} : #{pub_ip}"
 end

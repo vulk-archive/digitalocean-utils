@@ -53,5 +53,5 @@ if d.success?
   # TODO: maybe wait for an ipaddress
   #       barge.droplet.show(d.droplet.id).droplet.networks.v4[0].ip_address
 else
-  puts "It seems we failed to create a new droplet"
+  puts "It seems we failed to create a new droplet: #{d.message}"
 end
