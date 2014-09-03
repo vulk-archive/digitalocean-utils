@@ -17,11 +17,14 @@ end
 
 images = barge.image.all.first[1]
 
-# TODO: add a --all option to show all digital ocean images
+if ['-a','--all'].find{ |a| ARGV.include? a }
+  all = true
+else
+  all = false
+end
 
-myimages = images.collect {|i| i if i.public == false}.compact.collect do |x|
+myimages = images.collect {|i| i if all or i.public == false }.compact.collect do |x|
   "#{x.name} (id: #{x.id}) -- created at #{x.created_at}"
 end.sort
 
 puts myimages.join("\n")
-
