@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+
+require 'barge'
+require 'dotenv'
+Dotenv.load unless ENV['DIGITALOCEAN_TOKEN']
+
+unless ENV['DIGITALOCEAN_TOKEN']
+  puts "Please set the DIGITALOCEAN_TOKEN environment variable"
+  exit
+end
+
+barge = Barge::Client.new do |config|
+    config.access_token = ENV['DIGITALOCEAN_TOKEN']
+end
+
+kname = ARGV[0]
+keyfile = ARGV[1]
+keystring = open(keyfile).read()
+puts keystring 
+newkey = barge.key.create(name: kname, public_key: keystring)
+
+puts "#{kname} is #{newkey.id}"
