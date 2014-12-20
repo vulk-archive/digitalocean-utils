@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+
+require 'barge'
+require 'yaml'
+require 'dotenv'
+Dotenv.load unless ENV['DIGITALOCEAN_TOKEN']
+
+unless ENV['DIGITALOCEAN_TOKEN']
+  puts "Please set the DIGITALOCEAN_TOKEN environment variable"
+  exit
+end
+
+barge = Barge::Client.new do |config|
+    config.access_token = ENV['DIGITALOCEAN_TOKEN']
+end
+
+if ARGV[0] == "-p"
+  poweroff=true
+  ARGV.shift
+end
+
+droplet_id=ARGV[0]
+image_name=ARGV[1]
+
+if droplet_id.nil? or image_name.nil?
+  puts "Usage: create-snapshot <droplet-id> <image-name>"
+  exit(1)
+end
+
+if poweroff
+  d = barge.droplet.power_off(droplet_id)
+  unless d.success?
+    puts "Droplet powered off. Proceeding to snapshot droplet #{droplet_id}"
+  else
+    puts "It seems we failed to power off the droplet: #{d.message}"
+  end
+end
+
+d = barge.droplet.snapshot(droplet_id, name: image_name)
+
+if d.success?
+  puts "Created snapshot #{d.snapshot.id} currently with status #{d.snapshot.status}"
+else
+  puts "It seems we failed to create a snapshot: #{d.message}"
+end

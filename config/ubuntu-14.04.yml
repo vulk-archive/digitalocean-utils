@@ -1,0 +1,9 @@
+---
+:base_name: ubuntu-1404
+:region: nyc2
+:image_id: '6918990'
+:size: 512mb # 8gb
+:private_networking: true
+:ssh_keys:
+  - 601353 # hippiehacker
+  - 601492 # taylor
