@@ -16,6 +16,16 @@ end
 
 kname = ARGV[0]
 keyfile = ARGV[1]
+
+
+if kname.nil? or keyfile.nil?
+  puts "Usage: create-key <name> <ssh-public-key>"
+  exit(1)
+elsif not File.exist?(keyfile)
+  puts "SSH public key file not found: #{keyfile}"
+  exit(1)
+end
+
 keystring = open(keyfile).read()
 puts keystring 
 newkey = barge.key.create(name: kname, public_key: keystring)
