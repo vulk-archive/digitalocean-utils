@@ -37,7 +37,7 @@ end
 d = barge.droplet.destroy(droplet_id)
 
 if d.success?
-  puts "Destroyed droplet #{d.droplet.name} with id #{d.droplet.id}"
+  puts "Destroyed droplet [#{d.inspect}]"
 else
   puts "It seems we failed to destroy the droplet: #{d.message}"
 end
