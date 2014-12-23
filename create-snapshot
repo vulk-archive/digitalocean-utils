@@ -40,7 +40,8 @@ end
 d = barge.droplet.snapshot(droplet_id, name: image_name)
 
 if d.success?
-  puts "Created snapshot #{d.snapshot.id} currently with status #{d.snapshot.status}"
+  puts "Created snapshot"
+  #puts "Created snapshot #{d.snapshot.id} currently with status #{d.snapshot.status}"
 else
   puts "It seems we failed to create a snapshot: #{d.message}"
 end
